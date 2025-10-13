@@ -1,0 +1,18 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AZURE_OPENAI_ENDPOINT": "<your-azure-openai-endpoint>",
+    "AZURE_OPENAI_API_KEY": "<your-azure-openai-key>",
+    "AZURE_OPENAI_DEPLOYMENT": "gpt-4o-mini",
+    "AZURE_OPENAI_API_VERSION": "2024-08-01-preview",
+    "AZURE_CONTENT_SAFETY_ENDPOINT": "<your-content-safety-endpoint>",
+    "AZURE_CONTENT_SAFETY_KEY": "<your-content-safety-key>",
+    "AZURE_AI_LANGUAGE_ENDPOINT": "<your-language-endpoint>",
+    "AZURE_AI_LANGUAGE_KEY": "<your-language-key>",
+    "BLOB_ACCOUNT_URL": "http://127.0.0.1:10000/devstoreaccount1",
+    "BLOB_CONTAINER": "triage-results",
+    "APPINSIGHTS_CONNECTION_STRING": ""
+  }
+}

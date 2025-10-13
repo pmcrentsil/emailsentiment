@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azure Email Triage Accelerator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style> body{font-family:Inter,system-ui,Arial} </style>
+</head>
+<body class="bg-slate-50">
+  <header class="bg-[#0078D4] text-white shadow">
+    <div class="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-white/20 grid place-items-center">
+          <span class="font-extrabold">A</span>
+        </div>
+        <h1 class="text-xl font-bold">Azure Email Triage Accelerator</h1>
+      </div>
+      <a class="text-sm underline" href="../README.html">Docs</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6 py-8">
+    <div class="grid md:grid-cols-2 gap-6">
+      <section class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-lg font-semibold mb-4">Test an Email</h2>
+        <label class="block text-sm mb-1">Subject</label>
+        <input id="subject" class="w-full border rounded-lg px-3 py-2 mb-3" placeholder="Printer is down on 4th floor">
+        <label class="block text-sm mb-1">Sender</label>
+        <input id="sender" class="w-full border rounded-lg px-3 py-2 mb-3" placeholder="alex@contoso.com">
+        <label class="block text-sm mb-1">Importance</label>
+        <select id="importance" class="w-full border rounded-lg px-3 py-2 mb-3">
+          <option value="">Normal</option>
+          <option>High</option>
+          <option>Low</option>
+        </select>
+        <label class="block text-sm mb-1">Body</label>
+        <textarea id="body" rows="8" class="w-full border rounded-lg px-3 py-2" placeholder="Our floor printers are failing with a 50.2 fuser error. Can someone help asap?"></textarea>
+        <button id="send" class="mt-4 bg-[#0078D4] hover:bg-[#106EBE] text-white font-semibold px-4 py-2 rounded-xl">Analyze</button>
+        <p class="text-xs text-slate-500 mt-2">Make sure the Azure Functions host is running at http://localhost:7071.</p>
+      </section>
+
+      <section class="bg-white rounded-2xl shadow p-6">
+        <h2 class="text-lg font-semibold mb-4">Result</h2>
+        <pre id="output" class="bg-slate-900 text-slate-100 rounded-xl p-4 text-sm overflow-auto h-80"></pre>
+      </section>
+    </div>
+  </main>
+
+  <footer class="max-w-5xl mx-auto px-6 pb-8 text-sm text-slate-500">
+    Built with Azure Functions, Content Safety, AI Language, and Azure OpenAI.
+  </footer>
+
+<script>
+document.getElementById('send').onclick = async () => {
+  const payload = {
+    subject: document.getElementById('subject').value,
+    body: document.getElementById('body').value,
+    sender: document.getElementById('sender').value,
+    importance: document.getElementById('importance').value
+  };
+  const res = await fetch('http://localhost:7071/api/triage?code=local', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  });
+  document.getElementById('output').textContent = await res.text();
+};
+</script>
+</body>
+</html>
