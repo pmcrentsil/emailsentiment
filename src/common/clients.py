@@ -2,7 +2,8 @@ import os, json, datetime
 from typing import Dict, Any
 from azure.identity import DefaultAzureCredential
 from azure.storage.blob import BlobServiceClient
-from azure.ai.textanalytics import TextAnalyticsClient, AzureKeyCredential
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import TextAnalyticsClient
 from azure.ai.contentsafety import ContentSafetyClient
 from azure.ai.contentsafety.models import AnalyzeTextOptions, TextCategory
 from openai import AzureOpenAI
