@@ -1,4 +1,4 @@
-# TDCJ Secure Mail AI – Azure AI Email Triage Accelerator
+# TDOJ Secure Mail AI – Azure AI Email Triage Accelerator
 
 A production‑ready accelerator that classifies inmate email content for **safety**, **sentiment**, and **operational priority**, and then routes actions.  
 It uses **Azure AI Content Safety**, **Azure AI Language (Sentiment)**, **Azure OpenAI**, and **Azure Storage (Blob/Azurite)** behind an **Azure Functions** API, with an optional **Streamlit UI** for analyst review.
