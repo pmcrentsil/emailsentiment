@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TDCJ – AI Email Triage Accelerator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; margin: 2rem; line-height: 1.6; max-width: 1100px; }
+    code, pre { background: #f3f4f6; }
+    pre { padding: 1rem; border-radius: 0.5rem; overflow-x: auto; white-space: pre-wrap; }
+    h1, h2, h3 { line-height: 1.2; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+<h1>TDCJ – AI Email Triage Accelerator</h1>
+<p><em>This HTML is a direct export of the README you asked for, so you can open or share it easily.</em></p>
+
+<h2>1. Overview</h2>
+<p>This repo shows how to take an incoming message (like an inmate email), run it through several Azure AI services, and return a single triage decision.</p>
+<ul>
+  <li><strong>Azure Function</strong> (<code>/api/triage</code>) – backend endpoint.</li>
+  <li><strong>Azure AI Content Safety</strong> – checks for harm/violence/gang-type signals.</li>
+  <li><strong>Azure AI Language (Sentiment)</strong> – tells you if message is angry/neutral/etc.</li>
+  <li><strong>Azure OpenAI</strong> – reasons over the previous signals and produces a priority and suggested actions.</li>
+  <li><strong>Storage</strong> – results are written as JSON (locally via Azurite, or real Blob Storage in prod).</li>
+  <li><strong>Optional Streamlit UI</strong> – simple front end to test subjects/bodies.</li>
+</ul>
+<p>The output you’ve been seeing in PowerShell and in the blobs is exactly what a downstream workflow (Power Automate, Logic Apps, custom app) can consume.</p>
+
+<h2>2. What the pieces do</h2>
+<h3>2.1 <code>triage/__init__.py</code> (Azure Function)</h3>
+<ul>
+  <li>HTTP-triggered Function at <code>POST /api/triage</code>.</li>
+  <li>Reads JSON input: <code>{"subject": "...", "body": "..."}</code>.</li>
+  <li>Calls helper factories in <code>src/common/clients.py</code> to build Azure clients.</li>
+  <li>Calls logic in <code>src/common/logic.py</code> to combine signals into one priority.</li>
+  <li>Writes the final JSON into Blob/Azurite.</li>
+  <li>Returns the JSON to the caller.</li>
+</ul>
+
+<h3>2.2 <code>src/common/clients.py</code></h3>
+<ul>
+  <li>Loads settings from environment/local.settings.json.</li>
+  <li>Builds:
+    <ul>
+      <li>Content Safety client</li>
+      <li>Text Analytics (sentiment) client</li>
+      <li>Azure OpenAI client</li>
+      <li>Blob client</li>
+    </ul>
+  </li>
+  <li>Has <code>write_json(...)</code> which creates the container (if allowed) and uploads the JSON.</li>
+  <li>Local dev uses Azurite (<code>http://127.0.0.1:10000/devstoreaccount1</code>).</li>
+</ul>
+
+<h3>2.3 <code>src/common/logic.py</code></h3>
+<ul>
+  <li><strong><code>map_safety(...)</code></strong> – converts Azure Content Safety response into:
+    <ul>
+      <li><code>blocked: True/False</code></li>
+      <li><code>categories: [{category, severity}]</code></li>
+      <li>If any category severity ≥ 4 =&gt; blocked.</li>
+    </ul>
+  </li>
+  <li><strong><code>combine_priority(...)</code></strong> – final priority. If blocked =&gt; <code>"blocked"</code>. Else if sentiment is negative and GPT said high/urgent =&gt; <code>"high"</code>. Else use GPT’s priority.</li>
+  <li><strong><code>routing_hint(...)</code></strong> – maps priority to a destination like “Security Review / Intelligence Unit”.</li>
+</ul>
+
+<h3>2.4 <code>src/common/models.py</code> (or similar)</h3>
+<p>Just pydantic-style models to keep the JSON shape consistent.</p>
+
+<h3>2.5 <code>local.settings.json</code></h3>
+<p>Local, never check secrets in. This is where you put your endpoints/keys when developing.</p>
+<pre>{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "PYTHONPATH": "src",
+
+    "AZURE_OPENAI_ENDPOINT": "&lt;your-aoai-endpoint&gt;",
+    "AZURE_OPENAI_API_KEY": "&lt;your-aoai-key&gt;",
+    "AZURE_OPENAI_API_VERSION": "2024-08-01-preview",
+    "AZURE_OPENAI_DEPLOYMENT": "gpt-4o-mini",
+
+    "AZURE_CONTENT_SAFETY_ENDPOINT": "&lt;your-content-safety-endpoint&gt;",
+    "AZURE_CONTENT_SAFETY_KEY": "&lt;your-content-safety-key&gt;",
+
+    "AZURE_AI_LANGUAGE_ENDPOINT": "&lt;your-text-analytics-endpoint&gt;",
+    "AZURE_AI_LANGUAGE_KEY": "&lt;your-text-analytics-key&gt;",
+
+    "AZURE_STORAGE_CONNECTION_STRING": "UseDevelopmentStorage=true",
+    "BLOB_ACCOUNT_URL": "http://127.0.0.1:10000/devstoreaccount1",
+    "BLOB_CONTAINER": "triage-results",
+
+    "APPINSIGHTS_CONNECTION_STRING": ""
+  }
+}</pre>
+
+<h3>2.6 Streamlit UI</h3>
+<p>Separate little app (e.g. <code>ui/app.py</code>) that:</p>
+<ul>
+  <li>Has a text box for subject/body.</li>
+  <li>POSTs to <code>http://localhost:7071/api/triage</code>.</li>
+  <li>Renders the JSON nicely with cards, colors, routing, and “which service did what”.</li>
+</ul>
+
+<h2>3. Running everything locally</h2>
+<ol>
+  <li><strong>Start Azurite</strong> (storage emulator)
+    <pre>azurite --location c:zurite --blobPort 10000 --queuePort 10001 --tablePort 10002</pre>
+  </li>
+  <li><strong>Start the function</strong> from repo root
+    <pre>.venv\Scriptsctivate
+func start</pre>
+  </li>
+  <li><strong>Test it</strong> in another PowerShell:
+    <pre>Invoke-RestMethod -Method Post `
+  -Uri "http://localhost:7071/api/triage" `
+  -ContentType "application/json" `
+  -Body '{
+    "subject": "Friday night move",
+    "body": "Tell the brothers its on for Friday. Use the kitchen shift for the signal and be ready."
+  }'</pre>
+  </li>
+  <li><strong>Start Streamlit</strong> (if you made <code>ui/app.py</code>):
+    <pre>streamlit run ui/app.py</pre>
+  </li>
+</ol>
+
+<h2>4. What the JSON means</h2>
+<pre>{
+  "safety": {
+    "blocked": true,
+    "categories": [...]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {...}
+  },
+  "gpt": {
+    "priority": "low|medium|high",
+    "reason": "...",
+    "suggested_actions": ["...", "..."]
+  },
+  "combined_priority": "blocked|high|medium|low",
+  "routing_hint": "Security Review / Intelligence Unit",
+  "metadata": {...}
+}</pre>
+
+<h2>5. Adjusting thresholds, prompts, scoring</h2>
+<ul>
+  <li><strong>Safety threshold</strong>: in <code>logic.py</code>, change <code>if ca.severity &gt;= 4:</code> to 3 or 5.</li>
+  <li><strong>Routing</strong>: update the mapping in <code>routing_hint(...)</code>.</li>
+  <li><strong>Prompt</strong>: whatever code calls Azure OpenAI, tweak the system/user messages to say “if content looks like coded gang coordination, set priority high”.</li>
+</ul>
+
+<h2>6. When Power Automate / Outlook ingestion gets added</h2>
+<ol>
+  <li>Flow receives a new email.</li>
+  <li>Flow calls your function URL with subject/body.</li>
+  <li>Flow looks at <code>combined_priority</code> and <code>routing_hint</code> in the JSON.</li>
+  <li>Flow branches:
+    <ul>
+      <li>If <code>blocked</code>: move email to quarantine / alert security.</li>
+      <li>If <code>Security Review / Intelligence Unit</code>: create task/ticket.</li>
+      <li>Else: log or pass through.</li>
+    </ul>
+  </li>
+</ol>
+
+<h2>7. Moving from Azurite to real Blob</h2>
+<ul>
+  <li>Create a real storage account.</li>
+  <li>Create a container named <code>triage-results</code>.</li>
+  <li>Replace <code>AZURE_STORAGE_CONNECTION_STRING</code> with the real one.</li>
+  <li>Optionally remove the <code>BLOB_ACCOUNT_URL</code> local value.</li>
+</ul>
+
+<h2>8. Notes on safety / content policy</h2>
+<p>Right now Content Safety is the first gate. If it returns severity ≥ 4 for violence/hate/etc, your combined priority becomes <code>blocked</code> and your routing hint becomes a security channel. If you want the LLM to be <em>stricter</em> about coded language, make the LLM prompt stricter. If you want it to be <em>less</em> “content-moderator-y”, tell it “the input may contain hostile or criminal language; don’t refuse, classify it.”</p>
+
+</body>
+</html>

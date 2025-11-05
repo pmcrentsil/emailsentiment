@@ -1,0 +1,301 @@
+{
+  "safety": {
+    "blocked": true,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 6
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.02,
+      "neutral": 0.98,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.\n2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.\n3. Set a reminder for Friday to ensure that the necessary preparations are made.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.",
+      "2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.",
+      "3. Set a reminder for Friday to ensure that the necessary preparations are made."
+    ]
+  },
+  "combined_priority": "blocked",
+  "routing_hint": "Security Review / Intelligence Unit",
+  "metadata": {
+    "id": "8ebcff29-f072-4c17-87cc-ec996d8bc269",
+    "timestamp": "2025-10-21T13:53:21Z",
+    "subject": "Friday night move",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.07,
+      "neutral": 0.77,
+      "negative": 0.16
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Acknowledge receipt of the email and confirm understanding of the request.\n2. Clarify the details of the plan if necessary, as the message is vague.\n3. Monitor for any further communication or instructions related to the plan.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Acknowledge receipt of the email and confirm understanding of the request.",
+      "2. Clarify the details of the plan if necessary, as the message is vague.",
+      "3. Monitor for any further communication or instructions related to the plan."
+    ]
+  },
+  "combined_priority": "low",
+  "routing_hint": "Auto-reply / Archive",
+  "metadata": {
+    "id": "e6bfc8aa-dd9f-4b85-95f5-16ae4b3694aa",
+    "timestamp": "2025-10-21T14:10:49Z",
+    "subject": "Follow up on the plan",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 2
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "negative",
+    "confidence": {
+      "positive": 0.0,
+      "neutral": 0.01,
+      "negative": 0.99
+    }
+  },
+  "gpt": {
+    "priority": "high",
+    "reason": "**Priority:** High\n\n**Suggested Actions:**\n1. **Immediate Response:** Reach out to the sender to express concern and offer support. Encourage them to talk to someone who can help, such as a mental health professional.\n2. **Notify Appropriate Personnel:** Inform a supervisor or HR about the situation so they can take necessary actions to ensure the sender receives the help they need.\n3. **Provide Resources:** Share contact information for mental health resources or hotlines that can offer immediate assistance.",
+    "suggested_actions": [
+      "**Priority:** High",
+      "",
+      "**Suggested Actions:**",
+      "1. **Immediate Response:** Reach out to the sender to express concern and offer support. Encourage them to talk to someone who can help, such as a mental health professional.",
+      "2. **Notify Appropriate Personnel:** Inform a supervisor or HR about the situation so they can take necessary actions to ensure the sender receives the help they need.",
+      "3. **Provide Resources:** Share contact information for mental health resources or hotlines that can offer immediate assistance."
+    ]
+  },
+  "combined_priority": "high",
+  "routing_hint": "Teams + ITSM Ticket",
+  "metadata": {
+    "id": "330af8e4-444c-4121-a988-ea0550632ca9",
+    "timestamp": "2025-10-21T14:12:15Z",
+    "subject": "Feeling hopeless",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.0,
+      "neutral": 1.0,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Medium\n\nActions:\n1. Check the status of the family visitation form submission and confirm receipt with the sender.\n2. If the form was not received, advise the sender to resubmit it and provide any necessary instructions.\n3. Follow up with the relevant department to ensure timely processing of visitation requests in the future.",
+    "suggested_actions": [
+      "Priority: Medium",
+      "",
+      "Actions:",
+      "1. Check the status of the family visitation form submission and confirm receipt with the sender.",
+      "2. If the form was not received, advise the sender to resubmit it and provide any necessary instructions.",
+      "3. Follow up with the relevant department to ensure timely processing of visitation requests in the future."
+    ]
+  },
+  "combined_priority": "low",
+  "routing_hint": "Auto-reply / Archive",
+  "metadata": {
+    "id": "3ead0650-48de-444a-8fe4-2105fc1ce818",
+    "timestamp": "2025-10-21T14:13:43Z",
+    "subject": "Request for visit approval",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.09,
+      "neutral": 0.91,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "medium",
+    "reason": "Priority: Medium\n\nSuggested Actions:\n1. Acknowledge the email and inform the sender that their inquiry is being reviewed.\n2. Check the invoice #12345 for the duplicate line item and gather any necessary information.\n3. Respond to the sender with the findings and any corrective actions that will be taken.",
+    "suggested_actions": [
+      "Priority: Medium",
+      "",
+      "Suggested Actions:",
+      "1. Acknowledge the email and inform the sender that their inquiry is being reviewed.",
+      "2. Check the invoice #12345 for the duplicate line item and gather any necessary information.",
+      "3. Respond to the sender with the findings and any corrective actions that will be taken."
+    ]
+  },
+  "combined_priority": "medium",
+  "routing_hint": "Agent Queue",
+  "metadata": {
+    "id": "3028f25a-dee3-4806-b5e9-7778380da14a",
+    "timestamp": "2025-10-21T14:28:24Z",
+    "subject": "Question about my invoice",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 2
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.13,
+      "neutral": 0.84,
+      "negative": 0.03
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Acknowledge the email and confirm receipt.\n2. Forward the message to the relevant team members without mentioning names, as requested.\n3. Remind the team to keep the information confidential.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Acknowledge the email and confirm receipt.",
+      "2. Forward the message to the relevant team members without mentioning names, as requested.",
+      "3. Remind the team to keep the information confidential."
+    ]
+  },
+  "combined_priority": "low",
+  "routing_hint": "Auto-reply / Archive",
+  "metadata": {
+    "id": "e640beec-7924-4b8a-a237-5d8e36ce15f6",
+    "timestamp": "2025-10-21T14:28:57Z",
+    "subject": "Follow up on the plan",
+    "sender": null
+  }
+}

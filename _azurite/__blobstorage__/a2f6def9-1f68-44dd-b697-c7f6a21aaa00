@@ -1,0 +1,251 @@
+{
+  "safety": {
+    "blocked": true,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 6
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.02,
+      "neutral": 0.98,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.\n2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.\n3. Set a reminder for Friday to ensure that the necessary preparations are made.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.",
+      "2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.",
+      "3. Set a reminder for Friday to ensure that the necessary preparations are made."
+    ]
+  },
+  "combined_priority": "blocked",
+  "routing_hint": "Security Review / Intelligence Unit",
+  "metadata": {
+    "id": "cd46f16a-2e2f-4514-92c0-cd8c9c4c31d6",
+    "timestamp": "2025-10-21T05:26:40Z",
+    "subject": "Friday night move",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 2
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.13,
+      "neutral": 0.84,
+      "negative": 0.03
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Acknowledge the email and confirm receipt.\n2. Forward the message to the relevant team members without mentioning names, as requested.\n3. Ensure that the instruction about wearing the same color is communicated discreetly.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Acknowledge the email and confirm receipt.",
+      "2. Forward the message to the relevant team members without mentioning names, as requested.",
+      "3. Ensure that the instruction about wearing the same color is communicated discreetly."
+    ]
+  },
+  "combined_priority": "low",
+  "routing_hint": "Auto-reply / Archive",
+  "metadata": {
+    "id": "4b1f7115-cb38-432e-aa53-3958def33eb8",
+    "timestamp": "2025-10-21T05:28:37Z",
+    "subject": "Follow up on the plan",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": true,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 6
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.02,
+      "neutral": 0.98,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.\n2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.\n3. Set a reminder for Friday to ensure that the necessary preparations are made.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Forward the email to the relevant team or individuals who need to be informed about the Friday night move.",
+      "2. Clarify with the sender (if possible) for more details regarding the \"kitchen shift\" and what specific actions are required.",
+      "3. Set a reminder for Friday to ensure that the necessary preparations are made."
+    ]
+  },
+  "combined_priority": "blocked",
+  "routing_hint": "Security Review / Intelligence Unit",
+  "metadata": {
+    "id": "75ec4b40-bb1c-4581-89e2-3709c34b9a69",
+    "timestamp": "2025-10-21T06:10:36Z",
+    "subject": "Friday night move",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": false,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 0
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.07,
+      "neutral": 0.77,
+      "negative": 0.16
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Acknowledge receipt of the email and confirm understanding of the message.\n2. If applicable, remind the sender to provide more context or details for clarity.\n3. Monitor for any further communications that may clarify the intent or urgency of the message.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Acknowledge receipt of the email and confirm understanding of the message.",
+      "2. If applicable, remind the sender to provide more context or details for clarity.",
+      "3. Monitor for any further communications that may clarify the intent or urgency of the message."
+    ]
+  },
+  "combined_priority": "low",
+  "routing_hint": "Auto-reply / Archive",
+  "metadata": {
+    "id": "377e2fa5-56ac-4fea-8916-c87ef1e0d51b",
+    "timestamp": "2025-10-21T06:13:07Z",
+    "subject": "Follow up on the plan",
+    "sender": null
+  }
+}{
+  "safety": {
+    "blocked": true,
+    "categories": [
+      {
+        "category": "Hate",
+        "severity": 0
+      },
+      {
+        "category": "Violence",
+        "severity": 6
+      },
+      {
+        "category": "SelfHarm",
+        "severity": 0
+      },
+      {
+        "category": "Sexual",
+        "severity": 0
+      }
+    ]
+  },
+  "sentiment": {
+    "sentiment": "neutral",
+    "confidence": {
+      "positive": 0.03,
+      "neutral": 0.97,
+      "negative": 0.0
+    }
+  },
+  "gpt": {
+    "priority": "low",
+    "reason": "Priority: Low\n\nActions:\n1. Acknowledge receipt of the email and confirm understanding of the message.\n2. Forward the email to the relevant team or individuals who need to be informed about the Friday night event.\n3. If applicable, set a reminder for the event on Friday to ensure preparedness.",
+    "suggested_actions": [
+      "Priority: Low",
+      "",
+      "Actions:",
+      "1. Acknowledge receipt of the email and confirm understanding of the message.",
+      "2. Forward the email to the relevant team or individuals who need to be informed about the Friday night event.",
+      "3. If applicable, set a reminder for the event on Friday to ensure preparedness."
+    ]
+  },
+  "combined_priority": "blocked",
+  "routing_hint": "Security Review / Intelligence Unit",
+  "metadata": {
+    "id": "1659168a-2664-47dc-af51-d653aaf23599",
+    "timestamp": "2025-10-21T06:20:46Z",
+    "subject": "Friday night move the takedown",
+    "sender": null
+  }
+}

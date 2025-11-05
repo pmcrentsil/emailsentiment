@@ -1,0 +1,9 @@
+azure-functions==1.20.0
+azure-identity==1.17.1
+azure-ai-textanalytics==5.3.0
+azure-ai-contentsafety==1.0.0
+azure-storage-blob==12.21.0
+openai==1.43.0
+python-dotenv==1.0.1
+pydantic==2.9.2
+requests==2.32.3
